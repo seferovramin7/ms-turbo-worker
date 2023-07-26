@@ -4,6 +4,7 @@ import com.example.msturboworker.entity.CarEntity;
 import com.example.msturboworker.entity.CategorySearchEntity;
 import com.example.msturboworker.repository.CarRepository;
 import com.example.msturboworker.repository.CategorySearchRepository;
+import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -44,8 +45,9 @@ public class TurboService {
                 CategorySearchEntity.builder().searchUrl(url).chatId(chatId).build());
     }
 
+    @Transactional
     public void deleteSearch(String url) {
-        categorySearchRepository.deleteBySearchUrl(url);
+        categorySearchRepository.deleteCategorySearchEntityBySearchUrl(url);
     }
 
     public CarEntity saveCar(Long chatId, String carId, String price) {
@@ -56,7 +58,10 @@ public class TurboService {
         return CarEntity.builder().build();
     }
 
+    @Transactional
     public void deleteCar(String carId) {
-        carRepository.deleteByCarId(carId);
+        carRepository.deleteCarEntityByCarId(carId);
     }
+
+
 }

@@ -11,7 +11,7 @@ public interface CategorySearchRepository extends CrudRepository<CategorySearchE
 
     List<CategorySearchEntity> findAll();
 
-    void deleteBySearchUrl(String url);
+    void deleteCategorySearchEntityBySearchUrl(String url);
 
 }
 

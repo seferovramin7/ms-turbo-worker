@@ -31,7 +31,7 @@ public class CarScheduler {
 
     private final TurboClient turboClient;
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 60000)
     public void carScheduler() throws IOException {
 
         List<CarEntity> all = carRepository.findAll();
@@ -58,7 +58,7 @@ public class CarScheduler {
         }
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     public void searchScheduler() throws IOException {
         List<CategorySearchEntity> all = categorySearchRepository.findAll();
         for (CategorySearchEntity e : all) {
@@ -83,7 +83,7 @@ public class CarScheduler {
                     Duration elapsedTime;
                     elapsedTime = Duration.between(desiredTime, now);
                     long minutesElapsed = elapsedTime.getSeconds() / 60;
-                    if (minutesElapsed >= 5) {
+                    if (minutesElapsed <= 5) {
                         log.info("Elapsed time: " + minutesElapsed + " seconds");
                         Elements url = product.getElementsByClass("products-i__link");
                         String text = "Avtomobil əlavə olundu : turbo.az" + url.attr("href");

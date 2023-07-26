@@ -9,6 +9,7 @@ import com.example.msturboworker.telegram.update.TelegramUpdateDTO;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,7 +23,7 @@ public class BotScheduler {
     String token;
     private Long offset = null;
 
-    //    @Scheduled(fixedRate = 1000)
+//    @Scheduled(fixedRate = 1000)
     public void getUpdates() throws IOException {
         String url = api + "/bot" + token + "/getUpdates";
         if (offset != null) {
@@ -36,12 +37,9 @@ public class BotScheduler {
                 TelegramUpdateDTO telegramUpdateDTO = forObject.getResult().get(0);
                 offset = telegramUpdateDTO.getUpdateId() + 1;
 
-                String text = telegramUpdateDTO.getMessageDTO().getText();
                 Long id = telegramUpdateDTO.getMessageDTO().getChat().getId();
 
-
                 String response = "İstifadəçi nömrəniz: " + id;
-
                 sendMessage(response, id);
             }
         }

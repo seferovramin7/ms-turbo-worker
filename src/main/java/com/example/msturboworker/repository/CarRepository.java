@@ -13,6 +13,6 @@ public interface CarRepository extends CrudRepository<CarEntity, Long> {
 
     CarEntity findByCarId(String carId);
 
-    void deleteByCarId(String carId);
+    void deleteCarEntityByCarId(String carId);
 }
 

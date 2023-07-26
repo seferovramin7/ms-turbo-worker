@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://turbo.az")
 public class TurboCarController {
 
     private final TurboService service;
 
     @GetMapping("save/car")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> saveCar(@RequestParam String carId, @RequestParam Long chatId,
                                      @RequestParam String price) {
         return ResponseEntity.ok(service.saveCar(chatId, carId, price));
@@ -60,6 +60,8 @@ public class TurboCarController {
     // that elements delete endpoint
     // 4. There will be SaveCar button, that button will take "products-i__datetime" class named data and send to backend
     // 5. there will be "Save Search" button will take pages url and send to backend
+
+
 
 
 }
