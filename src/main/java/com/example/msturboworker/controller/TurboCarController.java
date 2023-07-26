@@ -18,9 +18,9 @@ public class TurboCarController {
 
     @GetMapping("save/car")
     @CrossOrigin(origins = "https://turbo.az")
-    public ResponseEntity<?> saveCar(@RequestParam String carId, @RequestParam Long chatId,
+    public ResponseEntity<?> saveCar(@RequestParam String url, @RequestParam Long chatId,
                                      @RequestParam String price) {
-        return ResponseEntity.ok(service.saveCar(chatId, carId, price));
+        return ResponseEntity.ok(service.saveCar(chatId, url, price));
     }
 
     @GetMapping("list/car")

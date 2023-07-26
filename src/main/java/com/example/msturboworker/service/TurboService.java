@@ -35,7 +35,7 @@ public class TurboService {
 
         List<String> carLinks = new ArrayList<>();
         for (CarEntity e : allByChatId) {
-            carLinks.add("https://turbo.az/autos/" + e.getCarId());
+            carLinks.add(e.getCarId());
         }
         return carLinks;
     }
@@ -51,7 +51,7 @@ public class TurboService {
     }
 
     public CarEntity saveCar(Long chatId, String carId, String price) {
-        if (carRepository.findByCarId(carId) == null) {
+        if (carRepository.findByCarIdAndAndChatId(carId, chatId) == null) {
             return carRepository.save(
                     CarEntity.builder().carId(carId).chatId(chatId).price(price).build());
         }
@@ -62,6 +62,4 @@ public class TurboService {
     public void deleteCar(String carId) {
         carRepository.deleteCarEntityByCarId(carId);
     }
-
-
 }
