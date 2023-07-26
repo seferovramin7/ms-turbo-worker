@@ -29,8 +29,8 @@ public class TurboCarController {
     }
 
     @DeleteMapping("delete/car")
-    public ResponseEntity<?> deleteCar(@RequestParam String carId) {
-        service.deleteCar(carId);
+    public ResponseEntity<?> deleteCar(@RequestParam String url, @RequestParam Long chatId) {
+        service.deleteCar(url, chatId);
         return ResponseEntity.ok("SUCCESS");
     }
 
@@ -51,7 +51,6 @@ public class TurboCarController {
     }
 
 
-
     // 1. in my chrome extension there will be input field that user will type his userId and when he clicks to save button, it will save on chrome storage, and
     // if there customerId in storage it will be shown in input as placeholder.
     // 2. there will be a link which goes to google.com
@@ -61,8 +60,6 @@ public class TurboCarController {
     // that elements delete endpoint
     // 4. There will be SaveCar button, that button will take "products-i__datetime" class named data and send to backend
     // 5. there will be "Save Search" button will take pages url and send to backend
-
-
 
 
 }

@@ -59,7 +59,7 @@ public class TurboService {
     }
 
     @Transactional
-    public void deleteCar(String carId) {
-        carRepository.deleteCarEntityByCarId(carId);
+    public void deleteCar(String url, Long chatId) {
+        carRepository.deleteCarEntityByCarIdAndChatId(url, chatId);
     }
 }

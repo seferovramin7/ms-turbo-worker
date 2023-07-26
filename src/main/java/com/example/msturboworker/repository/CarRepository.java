@@ -16,5 +16,7 @@ public interface CarRepository extends CrudRepository<CarEntity, Long> {
     CarEntity findByCarIdAndAndChatId(String carId, Long chatId);
 
     void deleteCarEntityByCarId(String carId);
+
+    void deleteCarEntityByCarIdAndChatId(String carId, Long chatId);
 }
 
