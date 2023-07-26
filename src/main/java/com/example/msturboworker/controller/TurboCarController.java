@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class TurboCarController {
 
     private final TurboService service;
 
     @GetMapping("save/car")
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "https://turbo.az")
     public ResponseEntity<?> saveCar(@RequestParam String carId, @RequestParam Long chatId,
                                      @RequestParam String price) {
         return ResponseEntity.ok(service.saveCar(chatId, carId, price));
