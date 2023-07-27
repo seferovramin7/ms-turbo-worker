@@ -41,13 +41,16 @@ public class TurboService {
     }
 
     public CategorySearchEntity saveSearch(Long chatId, String url) {
-        return categorySearchRepository.save(
-                CategorySearchEntity.builder().searchUrl(url).chatId(chatId).build());
+        if (categorySearchRepository.findByChatIdAndAndSearchUrl(chatId, url) == null) {
+            return categorySearchRepository.save(
+                    CategorySearchEntity.builder().searchUrl(url).chatId(chatId).build());
+        }
+        return null;
     }
 
     @Transactional
-    public void deleteSearch(String url) {
-        categorySearchRepository.deleteCategorySearchEntityBySearchUrl(url);
+    public void deleteSearch(String url, Long chatId) {
+        categorySearchRepository.deleteCategorySearchEntityBySearchUrlAndChatId(url, chatId);
     }
 
     public CarEntity saveCar(Long chatId, String carId, String price) {

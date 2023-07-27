@@ -11,7 +11,9 @@ public interface CategorySearchRepository extends CrudRepository<CategorySearchE
 
     List<CategorySearchEntity> findAll();
 
-    void deleteCategorySearchEntityBySearchUrl(String url);
+    CategorySearchEntity findByChatIdAndAndSearchUrl(Long chatId, String url);
+
+    void deleteCategorySearchEntityBySearchUrlAndChatId(String url, Long chatId);
 
 }
 

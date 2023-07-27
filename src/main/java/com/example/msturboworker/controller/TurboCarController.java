@@ -2,6 +2,7 @@ package com.example.msturboworker.controller;
 
 import com.example.msturboworker.service.TurboService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class TurboCarController {
@@ -36,12 +38,13 @@ public class TurboCarController {
 
     @GetMapping("save/search")
     public ResponseEntity<?> saveSearch(@RequestParam String url, @RequestParam Long chatId) {
+        log.info("Search url : " + url);
         return ResponseEntity.ok(service.saveSearch(chatId, url));
     }
 
     @DeleteMapping("delete/search")
-    public ResponseEntity<?> deleteSearch(@RequestParam String url) {
-        service.deleteSearch(url);
+    public ResponseEntity<?> deleteSearch(@RequestParam String url, @RequestParam Long chatId) {
+        service.deleteSearch(url, chatId);
         return ResponseEntity.ok("SUCCESS");
     }
 
@@ -49,17 +52,6 @@ public class TurboCarController {
     public ResponseEntity<?> searchList(@RequestParam Long chatId) {
         return ResponseEntity.ok(service.retrieveAllSearches(chatId));
     }
-
-
-    // 1. in my chrome extension there will be input field that user will type his userId and when he clicks to save button, it will save on chrome storage, and
-    // if there customerId in storage it will be shown in input as placeholder.
-    // 2. there will be a link which goes to google.com
-    // 3. there will be dropdown "Search List" dropdown list, that will fetch data from backend, and there will be DELETE button which will call
-    // that elements delete endpoint
-    // 3. there will be dropdown "Car List" dropdown list, that will fetch data from backend, and there will be DELETE button which will call
-    // that elements delete endpoint
-    // 4. There will be SaveCar button, that button will take "products-i__datetime" class named data and send to backend
-    // 5. there will be "Save Search" button will take pages url and send to backend
 
 
 }
