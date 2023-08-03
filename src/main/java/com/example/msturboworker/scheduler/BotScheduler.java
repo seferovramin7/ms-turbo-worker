@@ -23,7 +23,7 @@ public class BotScheduler {
     String token;
     private Long offset = null;
 
-//    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 1000)
     public void getUpdates() throws IOException {
         String url = api + "/bot" + token + "/getUpdates";
         if (offset != null) {

@@ -22,6 +22,7 @@ public class TurboCarController {
     @CrossOrigin(origins = "https://turbo.az")
     public ResponseEntity<?> saveCar(@RequestParam String url, @RequestParam Long chatId,
                                      @RequestParam String price) {
+        log.info("Car to save to database : {} by user : {}",url,chatId);
         return ResponseEntity.ok(service.saveCar(chatId, url, price));
     }
 

@@ -1,11 +1,12 @@
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.1'
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+group = 'com.codengineers'
+version = '0.0.1'
 
 java {
     sourceCompatibility = '17'
@@ -35,6 +36,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+
+bootJar {
+    archiveFileName = 'ms-turbo-worker.jar' // Customize the JAR file name if needed
+    destinationDirectory = file("$buildDir/target") // Set the custom build output directory
 }
