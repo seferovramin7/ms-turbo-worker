@@ -42,13 +42,13 @@ public class CarScheduler {
             Long chatId = e.getChatId();
             Long id = e.getId();
 
-            Document doc = Jsoup.connect("https://turbo.az/autos/" + carId).get();
+            Document doc = Jsoup.connect("https://codengineers.dev/autos/" + carId).get();
             String currentPrice = doc.getElementsByClass("tz-mt-10").text();
 
             if (!currentPrice.equals(price)) {
                 log.info("currentPrice : {}", currentPrice);
                 log.info("priceFromDatabase : {}", price);
-                String text = "Qiymət yeniləndi : \n " + "https://turbo.az/autos/" + carId;
+                String text = "Qiymət yeniləndi : \n " + "https://codengineers.dev/autos/" + carId;
                 carRepository.save(
                         CarEntity.builder().id(id).carId(carId).chatId(chatId).price(currentPrice)
                                 .build());
@@ -86,7 +86,7 @@ public class CarScheduler {
                     if (minutesElapsed <= 5) {
                         log.info("Elapsed time: " + minutesElapsed + " seconds");
                         Elements url = product.getElementsByClass("products-i__link");
-                        String text = "Avtomobil əlavə olundu : turbo.az" + url.attr("href");
+                        String text = "Avtomobil əlavə olundu : codengineers.dev" + url.attr("href");
                         turboClient.sendMessage(
                                 SendMessageDTO.builder().chatId(chatId).text(text).build());
                     }
