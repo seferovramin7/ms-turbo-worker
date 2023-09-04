@@ -1,12 +1,13 @@
 package com.example.msturboworker.dto;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@RequiredArgsConstructor
+@Getter
+@Setter
 public class CarDto {
     private Long chatId;
 
     private String carId;
+
 }

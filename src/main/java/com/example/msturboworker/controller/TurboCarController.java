@@ -19,7 +19,7 @@ public class TurboCarController {
     private final TurboService service;
 
     @GetMapping("save/car")
-    @CrossOrigin(origins = "https://codengineers.dev")
+    @CrossOrigin(origins = "https://turbo.az")
     public ResponseEntity<?> saveCar(@RequestParam String url, @RequestParam Long chatId,
                                      @RequestParam String price) {
         log.info("Car to save to database : {} by user : {}",url,chatId);
