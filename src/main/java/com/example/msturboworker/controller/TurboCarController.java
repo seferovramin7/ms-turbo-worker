@@ -53,6 +53,4 @@ public class TurboCarController {
     public ResponseEntity<?> searchList(@RequestParam Long chatId) {
         return ResponseEntity.ok(service.retrieveAllSearches(chatId));
     }
-
-
 }

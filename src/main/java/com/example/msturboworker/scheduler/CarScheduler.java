@@ -42,13 +42,13 @@ public class CarScheduler {
             Long chatId = e.getChatId();
             Long id = e.getId();
 
-            Document doc = Jsoup.connect("https://turbo.az/autos/" + carId).get();
+            Document doc = Jsoup.connect(carId).get();
             String currentPrice = doc.getElementsByClass("tz-mt-10").text();
 
             if (!currentPrice.equals(price)) {
                 log.info("currentPrice : {}", currentPrice);
                 log.info("priceFromDatabase : {}", price);
-                String text = "Qiymət yeniləndi : \n " + "https://turbo.az/autos/" + carId;
+                String text = "Qiymət yeniləndi : \n " + carId;
                 carRepository.save(
                         CarEntity.builder().id(id).carId(carId).chatId(chatId).price(currentPrice)
                                 .build());
